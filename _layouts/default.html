@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+
+  <!-- CSS -->
+  <link href="{{ "/style.css" | absolute_url }}" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <div class="workspace_menu">
+        <span>Slack</span>
+        <i class="icon-down-open"></i>
+      </div>
+      <div class="sidebar_content">
+        <div class="sidebar_section">
+          <h2>Channels</h2>
+          <ul>
+            <li class="sidebar_item {% if page.title == 'Home' %} active {% else %} unread {% endif %}">
+              <a href="{{ site.baseurl }}/">
+                <span><span class="channel_prefix">#</span> general</span>
+                <span class="unread_badge">8</span>
+              </a>
+            </li>
+            <li class="sidebar_item">
+              <a>
+                <span><span class="channel_prefix">#</span> random</span>
+              </a>
+            </li>
+            <a>Create a channel...</a>
+          </ul>
+        </div>
+
+        <div class="sidebar_section">
+          <h2>Direct Messages</h2>
+          <ul>
+            <li class="sidebar_item">
+              <a>
+                <span><i class="icon-heart"></i>slackbot</span>
+              </a>
+            </li>
+            <li class="sidebar_item unread">
+              <a>
+                <span><i class="icon-circle"></i>膜法师 💊</span>
+                <span class="unread_badge">1</span>
+              </a>
+            </li>
+
+            {% assign sorted-posts = site.posts | sort: 'post_date' | reverse %}
+            {% for post in sorted-posts %}
+            <li class="sidebar_item {% if page.title == post.title %} active {% endif %}">
+              <a href="{{ post.url | prepend: site.baseurl }}">
+                <span><i class="icon-circle user_state"></i>{{ post.title}}</span>
+              </a>
+            </li>
+            {% endfor %}
+
+          </ul>
+        </div>
+
+        <div class="sidebar_section">
+          <h2>Private Groups</h2>
+          <ul>
+            <a>New private group...</a>
+          </ul>
+        </div>
+      </div>
+
+      <div class="user_menu">
+        <img src="{{ site.sidebar.avatar }}" id="current_user_avatar" />
+        <div class="text_info">
+          <span id="current_user_name">{{ site.sidebar.username }}</span>
+          <span id="current_user_state"><i class="icon-circle"></i> online</span>
+        </div>
+        <i class="icon-up-open"></i>
+      </div>
+    </div>
+    <div class="message_container">
+      <div class="menu-trigger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+
+      {{ content }}
+    </div>
+  </div>
+
+  <script>
+    var menuTrigger = document.querySelector('.menu-trigger')
+    var siderbar = document.querySelector('.sidebar')
+
+    menuTrigger.addEventListener('click', function (e) {
+      // siderbar.classList.push(new Date().toJSON())
+      if (siderbar.classList.contains('show')) {
+        return siderbar.classList.remove('show')
+      }
+
+      siderbar.classList.add('show')
+    })
+  </script>
+</body>
+
+</html>

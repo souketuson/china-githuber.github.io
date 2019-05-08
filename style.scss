@@ -1,0 +1,315 @@
+---
+---
+
+@import 'fonts';
+
+body {
+  margin: 0;
+  font-family: $default-font-family;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 220px;
+  height: 100%;
+  min-width: 220px;
+  background: #333;
+  display: flex;
+  flex-direction: column;
+
+  @media only screen and (max-width: 599px) {
+    display: none;
+  }
+
+  &.show {
+    display: block;
+  }
+}
+
+.workspace_menu {
+  height: 51px;
+  padding: 0 0.5rem 0 1rem;
+  background: #3e313c;
+  border-bottom: 2px solid #372c36;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  span {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #fff;
+  }
+
+  i {
+    font-size: 1rem;
+    color: #a09a9f;
+    cursor: pointer;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+
+.user_menu {
+  height: 64px;
+  padding: 0 0.5rem;
+  background: #3e313c;
+  color: #fff;
+  border-top: 2px solid #372c36;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+
+  #current_user_avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 3px;
+  }
+
+  #current_user_name {
+    color: #fff;
+    font-weight: 900;
+    line-height: 1.5rem;
+  }
+
+  #current_user_state {
+    color: #2a80b9;
+
+    i {
+      font-size: .6rem;
+      color: #38978d;
+    }
+  }
+
+  .text_info {
+    width: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    >* {
+      max-width: 100%;
+      display: inline-block;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+
+  i {
+    font-size: 1rem;
+    color: #a09a9f;
+    cursor: pointer;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+
+.sidebar_content {
+  background: #4D394B;
+  font-size: .8rem;
+  color: #ab9ba9;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  line-height: 1.5rem;
+
+  .sidebar_section {
+    margin: 1rem 0 2rem;
+  }
+
+  h2 {
+    width: 160px;
+    margin: 0 1rem .1rem 1rem;
+    font-size: .8rem;
+    font-weight: 700;
+    line-height: 1.25rem;
+    text-transform: uppercase;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    >a {
+      margin: 0 1rem;
+      cursor: pointer;
+      font-weight: 700;
+      color: #ab9ba9;
+      border-bottom: 1px dotted #ab9ba9;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+}
+
+.sidebar_item {
+  padding: 0rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+
+  &:hover {
+    background: #3e313c;
+  }
+
+  &.active {
+    background: #4F9689;
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .25);
+
+    .unread_badge {
+      background: #fff;
+      color: #4c9689;
+      text-shadow: 0 0;
+    }
+    .user_state {
+      color: #fff;
+      text-shadow: 0 0;
+    }
+  }
+
+  &.unread {
+    color: #fff;
+    font-weight: 900;
+  }
+
+  &.offline {
+    font-style: italic;
+
+    i {
+      opacity: .5;
+    }
+  }
+
+  a {
+    width: 100%;
+    color: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .unread_badge {
+    color: #fff;
+    background: #eb4d5c;
+    border-radius: 9px;
+    padding: 2px 9px;
+    font-size: .8rem;
+    line-height: 14px;
+    font-weight: 700;
+    vertical-align: baseline;
+    white-space: nowrap;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, .2);
+  }
+
+  :first-child {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .channel_prefix {
+    color: #fff;
+    font-weight: 500;
+    opacity: .5;
+  }
+
+  i {
+    margin-top: -2px;
+    margin-left: 1px;
+    margin-right: 5px;
+    vertical-align: middle;
+    font-size: .6rem;
+    color: #38978d;
+  }
+}
+
+.message_container {
+  padding: 1.5rem 2rem;
+  background: #fff;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  @media only screen and (min-width: 1080px) {
+    padding: 1.5rem 20rem 1.5rem 4rem;
+  }
+
+  .menu-trigger {
+    display: none;
+    @media only screen and (max-width: 699px) {
+      & {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        padding: 5px 0;
+        border: 1px solid #a8a8a8;
+        border-radius: 2px;
+        box-sizing: border-box;
+
+
+
+        .line {
+          width: 60%;
+          height: 1px;
+          background: #a8a8a8;
+        }
+      }
+    }
+  }
+
+
+  .githuber_avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 3px;
+    border: #eee solid 1px;
+  }
+
+  .join_btn {
+    background: #3E313C;
+    padding: 10px 40px;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #fff;
+    font-weight: 800;
+    text-decoration: none;
+
+    @media only screen and (max-width: 699px) {
+      padding: 10px 20px;
+    }
+
+    &:hover {
+      background: rgb(105, 85, 103);
+    }
+  }
+}

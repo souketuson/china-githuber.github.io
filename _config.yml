@@ -1,0 +1,11 @@
+permalink: /:year/:month/:day/:title/
+
+title: ChinaGitHuber
+url: "https://china-githuber.github.io/"
+
+sass:
+  style: compressed
+
+sidebar:
+  username: ChinaGitHuber
+  avatar: "https://avatars0.githubusercontent.com/u/50052879?v=4"
