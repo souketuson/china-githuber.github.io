@@ -58,7 +58,7 @@
             {% assign strip_content = member.content | strip %}
             <li class="sidebar_item {% if page.title == member.title %}active{% endif %} {% if strip_content == '' %}offline{% endif %}">
               <a href="{{ member.url | prepend: site.baseurl }}">
-                <span><i class="icon-circle user_state"></i>{{ member.title }}</span>
+                <span><i class="icon-circle user_state"></i>{{ member.path | slice: 9, 1000 | replace: '.md', '' }}</span>
               </a>
             </li>
             {% endfor %}
