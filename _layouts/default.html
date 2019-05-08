@@ -55,7 +55,8 @@
             {% assign sorted-members = site.members | sort: 'title' | reverse %}
             {% assign sorted-members = sorted-members | sort: 'weight' | reverse %}
             {% for member in sorted-members %}
-            <li class="sidebar_item {% if page.title == member.title %} active {% endif %}">
+            {% assign strip_content = member.content | strip %}
+            <li class="sidebar_item {% if page.title == member.title %}active{% endif %} {% if strip_content == '' %}offline{% endif %}">
               <a href="{{ member.url | prepend: site.baseurl }}">
                 <span><i class="icon-circle user_state"></i>{{ member.title }}</span>
               </a>
@@ -89,7 +90,12 @@
         <div class="line"></div>
       </div>
 
+      {% assign strip_content = content | strip %}
+      {% if strip_content != '' %}
       {{ content }}
+      {% else %}
+      <p><em>该成员还没有填写任何内容哦～</em></p>
+      {% endif %}
     </div>
   </div>
 
