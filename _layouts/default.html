@@ -52,11 +52,12 @@
               </a>
             </li>
 
-            {% assign sorted-posts = site.posts | sort: 'post_date' | reverse %}
-            {% for post in sorted-posts %}
-            <li class="sidebar_item {% if page.title == post.title %} active {% endif %}">
-              <a href="{{ post.url | prepend: site.baseurl }}">
-                <span><i class="icon-circle user_state"></i>{{ post.title}}</span>
+            {% assign sorted-members = site.members | sort: 'title' | reverse %}
+            {% assign sorted-members = sorted-members | sort: 'weight' | reverse %}
+            {% for member in sorted-members %}
+            <li class="sidebar_item {% if page.title == member.title %} active {% endif %}">
+              <a href="{{ member.url | prepend: site.baseurl }}">
+                <span><i class="icon-circle user_state"></i>{{ member.title }}</span>
               </a>
             </li>
             {% endfor %}
