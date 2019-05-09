@@ -55,12 +55,24 @@
             {% assign sorted-members = site.members | sort: 'title' | reverse %}
             {% assign sorted-members = sorted-members | sort: 'weight' | reverse %}
             {% for member in sorted-members %}
-            {% assign strip_content = member.content | strip %}
-            <li class="sidebar_item {% if page.title == member.title %}active{% endif %} {% if strip_content == '' %}offline{% endif %}">
-              <a href="{{ member.url | prepend: site.baseurl }}">
-                <span><i class="icon-circle user_state"></i>{{ member.path | slice: 9, 1000 | replace: '.md', '' }}</span>
-              </a>
-            </li>
+              {% if page.title == member.title %}
+                {% assign strip_content = member.content | strip %}
+                <li class="sidebar_item active {% if strip_content == '' %}offline{% endif %}">
+                  <a href="{{ member.url | prepend: site.baseurl }}">
+                    <span><i class="icon-circle user_state"></i>{{ member.path | slice: 9, 100 | replace: '.md', '' }}</span>
+                  </a>
+                </li>
+              {% endif %}
+            {% endfor %}
+            {% for member in sorted-members %}
+              {% if page.title != member.title %}
+                {% assign strip_content = member.content | strip %}
+                <li class="sidebar_item {% if strip_content == '' %}offline{% endif %}">
+                  <a href="{{ member.url | prepend: site.baseurl }}">
+                    <span><i class="icon-circle user_state"></i>{{ member.path | slice: 9, 100 | replace: '.md', '' }}</span>
+                  </a>
+                </li>
+              {% endif %}
             {% endfor %}
 
           </ul>
