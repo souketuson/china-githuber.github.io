@@ -59,7 +59,7 @@
                 {% assign strip_content = member.content | strip %}
                 <li class="sidebar_item active {% if strip_content == '' %}offline{% endif %}">
                   <a href="{{ member.url | prepend: site.baseurl }}">
-                    <span><i class="icon-circle user_state"></i>{{ member.path | slice: 9, 100 | replace: '.md', '' }}</span>
+                    <span><i class="{% if strip_content == '' %}icon-circle-empty{% else %}icon-circle{% endif %} user_state"></i>{{ member.path | slice: 9, 100 | replace: '.md', '' }}</span>
                   </a>
                 </li>
               {% endif %}
@@ -69,7 +69,7 @@
                 {% assign strip_content = member.content | strip %}
                 <li class="sidebar_item {% if strip_content == '' %}offline{% endif %}">
                   <a href="{{ member.url | prepend: site.baseurl }}">
-                    <span><i class="icon-circle user_state"></i>{{ member.path | slice: 9, 100 | replace: '.md', '' }}</span>
+                    <span><i class="{% if strip_content == '' %}icon-circle-empty{% else %}icon-circle{% endif %} user_state"></i>{{ member.path | slice: 9, 100 | replace: '.md', '' }}</span>
                   </a>
                 </li>
               {% endif %}
