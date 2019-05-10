@@ -37,3 +37,14 @@ online: true
 正如我悄悄的来；
 我挥一挥衣袖，
 不带走一片云彩。
+
+
+
+------------------------------------------
+
+![](https://github.com/xianfeng92/Ganks/blob/master/images/bugbug.gif)
+
+[github](https://github.com/xianfeng92) 主要是一些 
+Android 和 Blockchain 方面的东西，欢迎交流！
+
+------------------------------------------
