@@ -1,7 +1,5 @@
 ---
 layout: default
-weight: 1
-online: true
 ---
 
 # 大家好，我是wendell，一个向往回归田园农家生活的平凡人
