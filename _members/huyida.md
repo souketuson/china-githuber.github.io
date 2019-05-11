@@ -1,6 +1,5 @@
 ---
 layout: default
-weight: 1
 online: true
 ---
 
